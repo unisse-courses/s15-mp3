@@ -3,3 +3,4 @@
 ## Team Members:
 
 Ting, Carlos Louis P.
+Dionisio, Geryco Eugynn T.
