@@ -1,1 +1,5 @@
-# s15-mp3
+# s15-mp3, WeightMate
+
+## Team Members:
+
+Ting, Carlos Louis P.
