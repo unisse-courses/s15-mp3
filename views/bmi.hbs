@@ -1,0 +1,133 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script type="text/javascript">
+      window.onload = function loadchart() {
+        var chart = new CanvasJS.Chart("chartContainer",
+        {
+    
+          title:{text: "Body Mass Index", fontFamily: "Raleway"},
+          legend: {
+            fontFamily: "Raleway"
+          },
+          axisX:
+          {
+            valueFormatString: "MMM",
+            interval:1,
+            intervalType: "month"
+          },
+          axisY:
+          {
+            includeZero: false
+          },
+          data: [
+          {
+            type: "line",
+    
+            dataPoints: [
+            { x: new Date(2012, 00, 1), y: 40 , indexLabel: "highest",markerColor: "red", markerType: "triangle"},
+            { x: new Date(2012, 01, 1), y: 39},
+            { x: new Date(2012, 02, 1), y: 30},
+            { x: new Date(2012, 03, 1), y: 33 },
+            { x: new Date(2012, 04, 1), y: 20 },
+            { x: new Date(2012, 05, 1), y: 25 },
+            { x: new Date(2012, 06, 1), y: 22 },
+            { x: new Date(2012, 07, 1), y: 23 },
+            { x: new Date(2012, 08, 1), y: 12 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross"},
+            { x: new Date(2012, 09, 1), y: 21 },
+            { x: new Date(2012, 10, 1), y: 22 },
+            { x: new Date(2012, 11, 1), y: 29 }
+            ]
+          }
+          ]
+        });
+    
+        chart.render();
+      }
+  </script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+
+    <div id="main" style="text-align: center; font-size: 30px;">
+      <span style="cursor:pointer; float: left;" onclick="openNav()">&#9776;</span>
+      <b style="color: cornflowerblue; font-family: Raleway; font-size: 85px; font-weight: bolder;">WeightMate</b>
+    </div>
+    
+    <script>
+      function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+          document.getElementById("main").style.marginLeft = "250px";
+          document.getElementById("chartBackground").style.marginLeft = "550px";
+          document.getElementById("chartBackground").style.filter = "brightness(60%)";
+          document.getElementById("outer-div").style.filter = "brightness(60%)";
+          document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+      }
+      
+      function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          document.getElementById("main").style.marginLeft= "0";
+          document.getElementById("chartBackground").style.marginLeft = "400px";
+          document.getElementById("chartBackground").style.filter = "brightness(100%)";
+          document.getElementById("outer-div").style.filter = "brightness(100%)";
+          document.body.style.backgroundColor = "white";
+      }
+    </script>
+
+    <div id="chartBackground">
+      <div id="chartContainer"></div>
+    </div>
+<br>
+<br>
+<br>
+  <div align="center">
+    <p id="note">*Note that Weight must be in pounds and Height must be in feet and the extra inches.</p>
+  </div>
+
+  <script>
+    function computeBMI(){
+      var weight =  parseInt(document.getElementById("Weight").value);
+      var height = (parseInt(document.getElementById("Feet").value) * 12) + parseFloat(document.getElementById("Inches").value);
+      var BMI = 703*(weight/Math.pow(height,2));
+      document.getElementById("BMI").value = BMI.toFixed(2);
+    }
+  </script>
+
+  <div id="outer-div" width="100%">
+      <div id="inner-div" >
+        <form action="POST" action="#"><div style="margin:0px; padding:0px">
+          <div>
+            <label>Weight: </label>
+            <input type="number" placeholder="In pounds" name="Weight" id="Weight" maxlength="20" required/>
+        
+            <label>Height-Feet: </label>
+              <input type="number" placeholder="Feet" name="Feet" id="Feet" maxlength="20" required/>
+          
+            <label>Height-Inches: </label>
+            <input type="number" placeholder="Inches" name="Inches" id="Inches" maxlength="20" required/>
+          </div>
+          <br>
+          <div align="center">
+            <label >Body BMI: </label>
+            <input type="text" name="BMI" id="BMI" readonly="readonly" />
+            <label >kg/m^2</label>
+          </div> 
+          <br>
+          <div align="center">
+            <input type="button" value="Calculate" name="Calculate" id="Calculate" class="btn btn-info" onclick="computeBMI()">
+            <input type="reset" value="Reset" name="reset" id="reset" class="btn btn-warning">
+            <button type="submit" value="Save" name="save" id="save" class="btn btn-success">Save</button>
+          </div> 
+        </form>
+      </div>
+  </div>
+  <br>
+  <br>
+  <div align="center" id="BMIpic">
+    <img src="https://i.ibb.co/gTnWYDB/BMI-standings.png" alt="BMI-standings" width="400" height="350">
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
