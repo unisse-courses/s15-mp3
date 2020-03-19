@@ -100,26 +100,28 @@
           <form action="POST" action="#"><div style="margin:0px; padding:0px">
             <div align="left">
               <label>Weight: </label>
-              <input type="number" placeholder="In pounds" name="Weightcal" id="Weightcal" maxlength="20" required/>
-          
+              <input style="float: right;" type="number" placeholder="In pounds" name="Weightcal" id="Weightcal" maxlength="20" required/>
+            </div>
+            <div align="left">
               <label>Age: </label>
-              <input type="number" name="Age" id="Age" maxlength="20" required/>
+              <input style="float: right;" type="number" name="Age" id="Age" maxlength="20" placeholder="In years" required/>
             </div>
             <div align="left">
               <label>Height-Feet: </label>
-              <input type="number" placeholder="Feet" name="Feet" id="Feet" maxlength="20" required/>
-          
-              <label>Height-Inches: </label>
-              <input type="number" placeholder="Inches" name="Inches" id="Inches" maxlength="20" required/>
+              <input style="float: right;" type="number" placeholder="Feet" name="Feet" id="Feet" maxlength="20" required/>
             </div>
+            <div align="left">
+              <label>Height-Inches: </label>
+              <input style="float: right;" type="number" placeholder="Inches" name="Inches" id="Inches" maxlength="20" required/>
+            </div>
+            <br>
+            <div align="center">
+              <button type="button" value="Calculate" name="calculate" id="calculate" class="btn btn-success" onclick="computeCalories()" >Calculate</button>
+            </div> 
             <br>
             <div align="center">
               <label >BMR/Calories: </label>
               <input type="number" name="BMR" id="BMR" value="" readonly="readonly" />
-            </div> 
-            <br>
-            <div align="center">
-              <button type="button" value="Calculate" name="calculate" id="calculate" class="btn btn-success" onclick="computeCalories()" >Calculate</button>
             </div> 
           </form>
         </div>

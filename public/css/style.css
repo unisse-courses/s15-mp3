@@ -112,6 +112,10 @@ body {
   padding: 3px;
   }
   
+  #inner-div div{
+    margin-bottom: 10px;
+  }
+  
   #note{
     color: cornflowerblue;
     font-family: "Raleway";
