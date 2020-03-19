@@ -82,16 +82,17 @@ body {
   
   #chartContainer{
     transition: .5s;
-    margin-left: 3px; 
+    background-color: white;
+    margin-left: 20px; 
     height: 410px; 
     width: 95%; 
   }
-
+ 
   #chartBackground{
     background-color: #ffd500;
     margin-left: 400px; 
-    transition: margin-left .5s;
-    height: 441px;
+    transition: .5s;
+    height: 455px;
     width: 50%; 
   }
 
