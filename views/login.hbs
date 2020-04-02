@@ -1,0 +1,55 @@
+
+<form action="Homepage.html" method = "post" class = "login">
+
+
+  <body>
+    <div id="mainhome">
+     
+      <div>
+        <span><b style="color: white; font-size: 50px; text-align: left; margin-left: 0px; text-shadow: 4px 2px black;"><i>WeightMate</i></b></span>
+        <span style="color: white; font-size:18px; text-shadow: 4px 2px black;"><b>The Tracker that Cares.~</b></span>
+      </div>
+    
+    </div >
+
+  <div class="img">
+    <img src="https://i.ibb.co/gS3KyCy/person-outline.png" alt = "Avatar" class = "avatar">  
+  </div>
+
+  <script>
+    function check(){
+      var username = document.getElementById("uname").value;
+      var password = document.getElementById("psw").value;
+      if((username == 'Steven' || username == 'Carlos' || username == 'Geryco') && password == '1234')
+      {
+        location.href = "Homepage.html";
+      }
+      else
+      {
+        alert('Invalid entries')
+      }
+    }
+  </script>
+  <form action="">
+    <div class="container">
+    <p></p>
+    <label for = "uname"> <b>Username</b> </label>
+    <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+    <p></p>
+    <label for = "psw"><b>Password</b></label>
+    <input type = "password" placeholder="Enter Password" name="psw" id="psw" required>
+    <p></p>
+    <button type = "submit" onclick="check()" >Login</button>
+    <label>
+      <input type = "checkbox" name= "remember"> Remember me
+    </label>
+  </div>
+
+  <div style="background-color:#f1f1f1">
+    <button type = "reset" class="cancelbtn">Cancel</button>
+    <span class = "psw">Don't have an account? <a href="register">Sign up!</a></span>
+  </div>
+  </form>
+  
+
+</form>
