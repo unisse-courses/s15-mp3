@@ -662,7 +662,7 @@ form.login {
 
 /* Full-width inputs */
 form.login input[type=text] {
-  width: 9%;
+  width: 18%;
   padding: 8px 12px;
   margin: 8px 0;
   display: block;

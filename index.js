@@ -3,17 +3,17 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const handlebars = require('handlebars');
 const bodyParser = require('body-parser');
-
-const mongodb = require('mongodb');
-const mongoose = require('mongoose');
-
-const mongoClient = mongodb.MongoClient;
-const databaseURL = "mongodb+srv://admin:admin@weightmate-onmru.mongodb.net/WeightMateDb?retryWrites=true&w=majority";
-const dbName= "WeightMateDb";
-
+const passport = require('passport');
 const app = express();
+require('./config/passport')(passport);
 const port = 3000;
+const flash = require('connect-flash');
+const session = require('express-session'); 
 
+
+//DB config
+const mongoose = require('mongoose');
+const databaseURL = require('./config/keys').MongoURI;
  mongoose.connect(databaseURL, {useNewUrlParser: true, useUnifiedTopology: true })
  .then(()=>console.log('Connected to database..'))
  .catch(err => console.error(err));  
@@ -33,59 +33,47 @@ app.engine( 'hbs', exphbs({
   }
 }));
 
+//express session middleware
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}))
+
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+//middleware  
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(express.static('public'));
 
-// const UserControl = require('./controllers/UserControl');
+//connect flash middleware
+app.use(flash());
+
+//global vars
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+const UserControl = require('./controllers/UserControl');
 
 app.set('view engine', 'hbs');
 
-// Login route
-app.get('/', function(req, res) {
-  res.render('login')
-});
-
-// Register route
-app.get('/register', function(req, res) {
-  res.render('register')
-});
-// app.post('/api/register/create', UserControl.create);
-// app.post('/api/register/update', UserControl.update);
-// app.get('/api/register/retrieve', UserControl.retrieve);
-// app.delete('/api/register/delete', UserControl.delete);
+//for postman
+app.post('/api/register/create', UserControl.create);
+app.post('/api/register/update', UserControl.update);
+app.get('/api/register/retrieve', UserControl.retrieve);
+app.delete('/api/register/delete', UserControl.delete);
 
 
-// Home route
-app.get('/home', function(req, res) {
-    res.render('home')
-});
-
-//Weight route
-app.get('/weight', function(req, res) {
-  res.render('weight')
-});
-
-//BMI route
-app.get('/bmi', function(req, res) {
-  res.render('bmi')
-});
-
-//Body Fat route
-app.get('/bodyfat', function(req, res) {
-  res.render('bodyfat')
-});
-
-//About route
-app.get('/about', function(req, res) {
-  res.render('about')
-});
-
-//Account route
-app.get('/account', function(req, res) {
-  res.render('account')
-});
+//Routes
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
 
 app.listen(port, function() {
   console.log('App listening at port '  + port)
