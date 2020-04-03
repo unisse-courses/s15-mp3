@@ -66,15 +66,15 @@
   </div>
   <div id="outer-div" width="100%">
       <div id="inner-div" >
-        <form action="POST" action="#"><div style="margin:0px; padding:0px">
+        <form action="/saveweight" method="POST" ><div style="margin:0px; padding:0px">
           <div>
             <label>Weight: </label>
-            <input type="text" placeholder="In pounds" name="weight" id="weight" maxlength="20" required/>
+            <input type="number" placeholder="In pounds" name="weight" id="weight" maxlength="20" required/>
           </div>
           <br>
           <div align="center">
-            <button type="submit" value="Save" name="save" id="save" class="btn btn-success">Save</button>
-            <input type="reset" value="Reset" name="reset" id="reset" class="btn btn-warning">
+            <button type="submit" value="Save" name="weightsave" id="weightsave" class="btn btn-success">Save</button>
+            <input type="reset" value="Reset" name="weightreset" id="weightreset" class="btn btn-warning">
           </div> 
         </form>
       </div>

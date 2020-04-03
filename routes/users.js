@@ -2,23 +2,16 @@ const express = require('express');
 const router = express.Router();
 const { ensureAuthenticated} = require('../config/auth');
 const bcrypt = require('bcryptjs');
+const User = require('../models/User');
 
 router.get('/home', ensureAuthenticated,(req, res) => 
     res.render('home', {
         username: req.user.username 
     }));
 
-// const dbweights = req.user.weights;
-
-// var arrayweights
-
-// for (const wval of dbweights){
-
-// }
-
-router.get('/weight', ensureAuthenticated,(req, res) => res.render('weight', {
-    weights: req.user.weights
-}));
+router.get('/weight', ensureAuthenticated,(req, res) => res.render('weight'
+// , {weights: req.user.weights}
+));
 
 router.get('/bmi', ensureAuthenticated,(req, res) => res.render('bmi'));
 router.get('/bodyfat', ensureAuthenticated,(req, res) => res.render('bodyfat'));

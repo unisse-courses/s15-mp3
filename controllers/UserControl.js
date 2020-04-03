@@ -1,9 +1,9 @@
-const UserModel = require('../models/User');
+const User = require('../models/User');
 
 
 module.exports = {
     create: (req, res) =>{
-        let user = new UserModel( {
+        let user = new User( {
             username: req.body.username,
             password: req.body.password,
             email: req.body.email,
@@ -22,20 +22,62 @@ module.exports = {
             res.json({success: false, result: err});
         })
     },
-    update: (req, res) =>{
-        UserModel.update({_id: req.body._id}, req.body)
-        .then(user=> {
-            if(!user) res.json({success: false, result: "User does not exist"});
 
-            res.json(user);
-
+    insertweight: (req, res) =>{
+        User.updateOne({_id: req.user._id}, 
+        {   $push: { "weights": {
+            value: parseFloat(req.body.weight),
+            date: new Date()
+        }}
+      })
+      .then(user=> {
+        if(!req.user) console.log('user do not exists');
+    
+        console.log('success');
+    
         })
         .catch(err=>{
-            res.json({success: false, result: err});
+            console.log(err)
+        });
+    },
+
+    inserBMI: (req, res) =>{
+        User.updateOne({_id: req.user._id}, 
+        {   $push: { "BMIs": {
+            value: parseFloat(req.body.BMI),
+            date: new Date()
+        }}
+      })
+      .then(user=> {
+        if(!req.user) console.log('user do not exists');
+    
+        console.log('success');
+    
+        })
+        .catch(err=>{
+            console.log(err)
+        });
+    },
+
+    inserBFP: (req, res) =>{
+        User.updateOne({_id: req.user._id}, 
+        {   $push: { "weights": {
+            value: parseFloat(req.body.BFP),
+            date: new Date()
+        }}
+      })
+      .then(user=> {
+        if(!req.user) console.log('user do not exists');
+    
+        console.log('success');
+    
+        })
+        .catch(err=>{
+            console.log(err)
         });
     },
     retrieve: (req, res) =>{
-        UserModel.find()
+        User.find()
         .then(result =>{
             if(!result) res.json({success: false, result: "No results found"});
 
@@ -46,7 +88,7 @@ module.exports = {
         });
     },
     delete: (req, res) =>{
-        UserModel.remove({_id: req.body._id})
+        User.remove({_id: req.body._id})
         .then(result =>{
             if(!result) res.json({success: false, result: "No user was found was found with that id"});
 
