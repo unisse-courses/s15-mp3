@@ -52,25 +52,32 @@
     <hr>
 
     <div class="img">
-    <img src="https://i.ibb.co/gS3KyCy/person-outline.png" alt = "Avatar" class = "avatar">
+    <img src="https://i.ibb.co/gS3KyCy/person-outline.png" alt = "Avatar" class = "avatar" id = "avatar">
     <p style align = "middle">Edit <a href="">picture</a>.</p>
     </div>
     <form action="">
-        <div class="container2">
-    <label for="name"><b>Height</b></label>
-    <input type="text" placeholder="Enter height" name="height" required>
+    <div class="container2">
+    <label for="firstname"><b>First Name</b></label>
+    <input type="text" placeholder="Enter name" name="firstname" id="firstname" value={{{firstname}}} required>
     <p></p>
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter name" name="name" required>
+    <label for="name"><b>Last Name</b></label>
+    <input type="text" placeholder="Enter name" name="lastname" id="lastname" value={{{lastname}}} required>
+    <p></p>
+    <label for="heightfeet"><b>Height Feet</b></label>
+    <input type="text" placeholder="Enter height" name="heightfeet" id="heightfeet" value={{{heightfeet}}} required>
+    <p></p>
+    <label for="heightinch"><b>Height Inch</b></label>
+    <input type="text" placeholder="Enter height" name="heightinch" id="heightinch" value={{{heightinch}}} required>
     <p></p>
     <label for="gender"><b>Sex</b></label><br><br>
-    <input type="radio" id="male" name="gender" value="male">
+    <input type="radio" id="male" name="gender" value="male" >
     <label for="male">Male</label><br><br>
     <input type="radio" id="female" name="gender" value="female">
-    <label for="female">Female</label><br><br>
+    <label for="female">Female</label>
+    {{!-- still no value for gender radio button --}}
     <p></p>
     <label for="country"><b>Country</b></label>
-    <input type="text" placeholder="Change country" name="country" required>
+    <input type="text" placeholder="Change country" name="country" id="country" value={{{country}}} required>
     <p></p>
     </div>
 
@@ -82,12 +89,12 @@
 
     <div class="container3">
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Change email" name="email" required>
+    <input type="text" placeholder="Change email" name="email" value={{{email}}} required>
     <p></p>
     <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Change username" name="username" required>
+    <input type="text" placeholder="Change username" name="username" value={{{username}}} required>
     <p></p>
-    <p>Change <a href="#changepass" onclick="showpass()">password?</a>.</p>
+    <p>Change <a href="#avatar" onclick="showpass()">password?</a>.</p>
 
         <div id = "changepass" style="display: none;">
         <label for="crpsw"><b>Current Password</b></label>
