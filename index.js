@@ -61,19 +61,19 @@ app.use((req, res, next) => {
 });
 
 const UserControl = require('./controllers/UserControl');
+const IndexControl = require('./controllers/IndexControl');
 
 app.set('view engine', 'hbs');
-
-//for postman
-app.post('/api/register/create', UserControl.create);
-// app.post('/api/register/update', UserControl.update);
-app.get('/api/register/retrieve', UserControl.retrieve);
-app.delete('/api/register/delete', UserControl.delete);
-
 
 //Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+
+app.use('/logout', IndexControl.logout);
+
+app.post('/register', IndexControl.register);
+app.post('/', IndexControl.login);
+
 app.post('/saveweight', UserControl.insertweight);
 app.post('/saveBMI', UserControl.inserBMI);
 app.post('/saveBFP', UserControl.inserBFP);

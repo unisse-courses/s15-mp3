@@ -1,27 +1,6 @@
 const User = require('../models/User');
 
-
 module.exports = {
-    create: (req, res) =>{
-        let user = new User( {
-            username: req.body.username,
-            password: req.body.password,
-            email: req.body.email,
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            birthdate: req.body.birthdate,
-            country: req.body.country,
-            sex: req.body.gender,
-        });
-        
-        user.save()
-        .then(result => {
-            res.json({success: true, result: result});
-        }) 
-        .catch(err => {
-            res.json({success: false, result: err});
-        })
-    },
 
     insertweight: (req, res) =>{
         User.updateOne({_id: req.user._id}, 
@@ -75,27 +54,27 @@ module.exports = {
         .catch(err=>{
             console.log(err)
         });
-    },
-    retrieve: (req, res) =>{
-        User.find()
-        .then(result =>{
-            if(!result) res.json({success: false, result: "No results found"});
+    }//,
+    // retrieve: (req, res) =>{
+    //     User.find()
+    //     .then(result =>{
+    //         if(!result) res.json({success: false, result: "No results found"});
 
-            res.json({sucess: true, result: result});
-        })
-        .catch(err=>{
-            res.json({success: false, result: err});
-        });
-    },
-    delete: (req, res) =>{
-        User.remove({_id: req.body._id})
-        .then(result =>{
-            if(!result) res.json({success: false, result: "No user was found was found with that id"});
+    //         res.json({sucess: true, result: result});
+    //     })
+    //     .catch(err=>{
+    //         res.json({success: false, result: err});
+    //     });
+    // },
+    // delete: (req, res) =>{
+    //     User.remove({_id: req.body._id})
+    //     .then(result =>{
+    //         if(!result) res.json({success: false, result: "No user was found was found with that id"});
 
-            res.json({sucess: true, result: result});
-        })
-        .catch(err=>{
-            res.json({success: false, result: err});
-        });
-    }
+    //         res.json({sucess: true, result: result});
+    //     })
+    //     .catch(err=>{
+    //         res.json({success: false, result: err});
+    //     });
+    // }
 }
