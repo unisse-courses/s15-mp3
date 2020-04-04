@@ -4,6 +4,13 @@ const {ensureAuthenticated} = require('../config/auth');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
+function calculate_age(date) { 
+    var diff_ms = Date.now() - date;
+    var age_dt = new Date(diff_ms); 
+  
+    return Math.abs(age_dt.getUTCFullYear() - 1970);
+}
+
 router.get('/home', ensureAuthenticated,(req, res) => 
     res.render('home', {
         username: req.user.username 
@@ -12,7 +19,7 @@ router.get('/home', ensureAuthenticated,(req, res) =>
 router.get('/weight', ensureAuthenticated, function(req, res){
     res.render('weight', {
         encodedweight : encodeURIComponent(JSON.stringify(req.user.weights)),
-        birthday: req.user.birthdate,
+        age: calculate_age(req.user.birthdate),
         sex: req.user.sex,
         heightfeet: req.user.heightfeet,
         heightinch: req.user.heightinch,
@@ -32,7 +39,7 @@ router.get('/bmi', ensureAuthenticated, function(req, res){
 router.get('/bodyfat', ensureAuthenticated, function(req, res){
     res.render('bodyfat', {
         encodedBFP : encodeURIComponent(JSON.stringify(req.user.BFPs)),
-        birthday: req.user.birthdate,
+        age: calculate_age(req.user.birthdate),
         sex: req.user.sex,
         heightfeet: req.user.heightfeet,
         heightinch: req.user.heightinch,

@@ -88,11 +88,11 @@
                 </div>
                 <div align="center">
                   <label id="dependent1"></label>
-                  <input id="dependent1txt" style="margin-left: 80px;" type="number" placeholder="In inches" name="dependent1" id="dependent1txtbox" maxlength="20" required/>
+                  <input id="dependent1txt" type="number" placeholder="In inches" name="dependent1" maxlength="20" required/>
                 </div>
                 <div align="center">
                   <label id="dependent2"></label>
-                  <input id="dependent2txt" style="margin-left: 94px;" type="number" placeholder="In inches" name="dependent2" id="dependent2txtbox" maxlength="20" required/>
+                  <input id="dependent2txt" type="number" placeholder="In inches" name="dependent2" maxlength="20" required/>
                 </div>
                 
                   <div>
@@ -104,35 +104,72 @@
                     <label for="No">No</label>
                   </div>
                   {{#if_eq sex 'male'}}
-                      <script>
-                        /*To be changed depending on user's age and gender*/
-                        document.getElementById("dependent1").innerHTML = "Upper Arm: ";
-                        document.getElementById("dependent2").innerHTML = "Forearm : ";
-                        document.getElementById("dependent1txt").style.marginLeft = "43px"
-                        document.getElementById("dependent2txt").style.marginLeft = "58px"
-                    </script>
-                  {{else}}
-                      <script>
-                        /*To be changed depending on user's age and gender*/
-                        document.getElementById("dependent1").innerHTML = "Thigh: ";
-                        document.getElementById("dependent2").innerHTML = "Calf: ";
-                        document.getElementById("dependent1txt").style.marginLeft = "80px"
-                        document.getElementById("dependent1txt").style.marginLeft = "94px"
+                        {{#iff age '<' 27}}
+                          <script>
+                            /*To be changed depending on user's age and gender*/
+                            document.getElementById("dependent1").innerHTML = "Upper Arm: ";
+                            document.getElementById("dependent2").innerHTML = "Forearm : ";
+                            document.getElementById("dependent1txt").style.marginLeft = "43px"
+                            document.getElementById("dependent2txt").style.marginLeft = "58px"
+                            function computeBFP(){
+                              var abdomen = parseFloat(document.getElementById("abdomen").value);
+                              var dependent1 = parseFloat(document.getElementById("dependent1txt").value);
+                              var dependent2 = parseFloat(document.getElementById("dependent2txt").value);
+                              var BFP = parseFloat((abdomen*1.31) + (dependent1*3.70) - (dependent2*5.43) - 10.2);
+                              document.getElementById("BFP").value = BFP.toFixed(2);
+                            } 
                         </script>
-                  {{/if_eq}}
-
-                  <script>
-                    /*temporary BFP formula for female from ages  17-26 and no exercise*/
-                    function computeBFP(){
-                      var abdomen = parseFloat(document.getElementById("abdomen").value);
-                      var dependent1 = parseFloat(document.getElementById("dependent1txtbox").value);
-                      var dependent2 = parseFloat(document.getElementById("dependent2txtbox").value);
-                      var BFP = parseFloat((abdomen*1.34) + (dependent1*2.08) - (dependent2*4.31) - 19.6);
-                      document.getElementById("BFP").value = BFP.toFixed(2);
-                    } 
-                  </script>
-
-                
+                      {{/iff}}
+                      {{#iff age '>'  27}}
+                          <script>
+                            /*To be changed depending on user's age and gender*/
+                            document.getElementById("dependent1").innerHTML = "Buttock: ";
+                            document.getElementById("dependent2").innerHTML = "Forearm: ";
+                            document.getElementById("dependent1txt").style.marginLeft = "67px"
+                            document.getElementById("dependent2txt").style.marginLeft = "60px"
+                            function computeBFP(){
+                              var abdomen = parseFloat(document.getElementById("abdomen").value);
+                              var dependent1 = parseFloat(document.getElementById("dependent1txt").value);
+                              var dependent2 = parseFloat(document.getElementById("dependent2txt").value);
+                              var BFP = parseFloat((abdomen*0.9) + (dependent1*1.05) - (dependent2*3.00) - 15.0);
+                              document.getElementById("BFP").value = BFP.toFixed(2);
+                            } 
+                            </script>
+                      {{/iff}}
+                  {{else}}
+                      {{#iff age '<' 26}}
+                              <script>
+                                /*To be changed depending on user's age and gender*/
+                                document.getElementById("dependent1").innerHTML = "Thigh: ";
+                                document.getElementById("dependent2").innerHTML = "Forearm : ";
+                                document.getElementById("dependent1txt").style.marginLeft = "80px"
+                                document.getElementById("dependent2txt").style.marginLeft = "58px"
+                                function computeBFP(){
+                                  var abdomen = parseFloat(document.getElementById("abdomen").value);
+                                  var dependent1 = parseFloat(document.getElementById("dependent1txt").value);
+                                  var dependent2 = parseFloat(document.getElementById("dependent2txt").value);
+                                  var BFP = parseFloat((abdomen*1.34) + (dependent1*2.08) - (dependent2*4.31) - 19.6);
+                                  document.getElementById("BFP").value = BFP.toFixed(2);
+                                } 
+                            </script>
+                          {{/iff}}
+                          {{#iff age '>' 26}}
+                              <script>
+                                /*To be changed depending on user's age and gender*/
+                                document.getElementById("dependent1").innerHTML = "Thigh: ";
+                                document.getElementById("dependent2").innerHTML = "Calf: ";
+                                document.getElementById("dependent1txt").style.marginLeft = "80px"
+                                document.getElementById("dependent2txt").style.marginLeft = "94px"
+                                function computeBFP(){
+                                  var abdomen = parseFloat(document.getElementById("abdomen").value);
+                                  var dependent1 = parseFloat(document.getElementById("dependent1txt").value);
+                                  var dependent2 = parseFloat(document.getElementById("dependent2txt").value);
+                                  var BFP = parseFloat((abdomen*1.19) + (dependent1*1.24) - (dependent2*1.45) - 18.4);
+                                  document.getElementById("BFP").value = BFP.toFixed(2);
+                                } 
+                                </script>
+                          {{/iff}}
+                  {{/if_eq}}  
                 <br>
                 <div align="center">
                   <label >Body Fat Percentage: </label>
