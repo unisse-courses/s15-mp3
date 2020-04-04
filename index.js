@@ -5,6 +5,7 @@ const handlebars = require('handlebars');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const app = express();
+
 require('./config/passport')(passport);
 const port = 3000;
 const flash = require('connect-flash');
@@ -29,6 +30,13 @@ app.engine( 'hbs', exphbs({
     em: function(text) {
       var x = `<em>${text}</em>`;
       return new handlebars.SafeString(x);
+    },
+    if_eq: function(a,b, opts) {
+      if (a === b) {
+        return opts.fn(this);
+      } else {
+        return opts.inverse(this);
+      }
     }
   }
 }));
