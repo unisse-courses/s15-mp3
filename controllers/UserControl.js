@@ -12,7 +12,7 @@ module.exports = {
       .then(user=> {
         if(!req.user) console.log('user do not exists');
     
-        console.log('success');
+        res.redirect('/users/weight');
     
         })
         .catch(err=>{
@@ -30,7 +30,7 @@ module.exports = {
       .then(user=> {
         if(!req.user) console.log('user do not exists');
     
-        console.log('success');
+        res.redirect('/users/bmi');
     
         })
         .catch(err=>{
@@ -40,7 +40,7 @@ module.exports = {
 
     inserBFP: (req, res) =>{
         User.updateOne({_id: req.user._id}, 
-        {   $push: { "weights": {
+        {   $push: { "BFPs": {
             value: parseFloat(req.body.BFP),
             date: new Date()
         }}
@@ -48,7 +48,7 @@ module.exports = {
       .then(user=> {
         if(!req.user) console.log('user do not exists');
     
-        console.log('success');
+        res.redirect('/users/bodyfat');
     
         })
         .catch(err=>{

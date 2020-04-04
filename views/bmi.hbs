@@ -34,13 +34,27 @@
       <canvas id="myChart" height="65%" width="125%"></canvas>
     </div>
   </div>
+
+<script>
+    var decodedJson = decodeURIComponent("{{{encodedBMI}}}");
+    var BMIs = JSON.parse(decodedJson);
+    
+    var BMIvalues =BMIs.map(element => element.value);
+    var BMIdatetemp =BMIs.map(element => element.date);
+    var BMIdate = [];
+
+    BMIdatetemp.forEach(function (item) {
+      BMIdate.push(item.substring(0,10));
+    })
+</script>
+
   <script>
     var CHART = document.getElementById("myChart").getContext('2d');
 
     var linechart = new Chart(CHART, {
       type: 'line',
       data: {
-        labels: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+        labels: BMIdate,
         datasets: [{
           label : "BMI",
           fill : false,
@@ -54,7 +68,7 @@
           pointHoverBorderColor: "rgba(220,220,220,1)",
           pointHoverBorderWidth: 3,
           pointRadius: 1,
-          data: [1,2,3,4,5,6,6,7]
+          data: BMIvalues
         }],
       },
       options:{}
@@ -84,11 +98,11 @@
           </div>
           <div align="left">
             <label>Height-Feet: </label>
-              <input style="float: right;" type="number" placeholder="Feet" name="Feet" id="Feet" maxlength="20" required/>
+              <input style="float: right;" type="number" placeholder="Feet" name="Feet" id="Feet" maxlength="20" value={{{heightfeet}}} required/>
           </div>
           <div align="left">
             <label>Height-Inches: </label>
-            <input style="float: right;" type="number" placeholder="Inches" name="Inches" id="Inches" maxlength="20" required/>
+            <input style="float: right;" type="number" placeholder="Inches" name="Inches" id="Inches" maxlength="20" value={{{heightinch}}} required/>
           </div>
           <br>
           <div align="center">

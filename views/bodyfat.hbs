@@ -34,13 +34,27 @@
       <canvas id="myChart" height="65%" width="125%"></canvas>
     </div>
   </div>
+
+  <script>
+    var decodedJson = decodeURIComponent("{{{encodedBFP}}}");
+    var BFPs = JSON.parse(decodedJson);
+    
+    var BFPvalues =BFPs.map(element => element.value);
+    var BFPdatetemp =BFPs.map(element => element.date);
+    var BFPdate = [];
+
+    BFPdatetemp.forEach(function (item) {
+      BFPdate.push(item.substring(0,10));
+    })
+</script>
+
   <script>
     var CHART = document.getElementById("myChart").getContext('2d');
 
     var linechart = new Chart(CHART, {
       type: 'line',
       data: {
-        labels: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+        labels: BFPdate,
         datasets: [{
           label : "Body Fat",
           fill : false,
@@ -54,7 +68,7 @@
           pointHoverBorderColor: "rgba(220,220,220,1)",
           pointHoverBorderWidth: 3,
           pointRadius: 1,
-          data: [1,2,3,4,5,6,6,7]
+          data: BFPvalues
 
         }],
       },
@@ -74,11 +88,11 @@
                 </div>
                 <div align="center">
                   <label id="dependent1"></label>
-                  <input style="margin-left: 80px;" type="number" placeholder="In inches" name="dependent1" id="dependent1txtbox" maxlength="20" required/>
+                  <input id="dependent1txt" style="margin-left: 80px;" type="number" placeholder="In inches" name="dependent1" id="dependent1txtbox" maxlength="20" required/>
                 </div>
                 <div align="center">
                   <label id="dependent2"></label>
-                  <input style="margin-left: 94px;" type="number" placeholder="In inches" name="dependent2" id="dependent2txtbox" maxlength="20" required/>
+                  <input id="dependent2txt" style="margin-left: 94px;" type="number" placeholder="In inches" name="dependent2" id="dependent2txtbox" maxlength="20" required/>
                 </div>
                 
                   <div>
@@ -89,12 +103,23 @@
                     <input type="radio" id="No" name="exercise" value="No">
                     <label for="No">No</label>
                   </div>
-
-                  <script>
-                    /*To be changed depending on user's age and gender*/
-                    document.getElementById("dependent1").innerHTML = "Thigh: ";
-                    document.getElementById("dependent2").innerHTML = "Calf: ";
-                  </script>
+                  {{#if_eq sex 'male'}}
+                      <script>
+                        /*To be changed depending on user's age and gender*/
+                        document.getElementById("dependent1").innerHTML = "Upper Arm: ";
+                        document.getElementById("dependent2").innerHTML = "Forearm : ";
+                        document.getElementById("dependent1txt").style.marginLeft = "43px"
+                        document.getElementById("dependent2txt").style.marginLeft = "58px"
+                    </script>
+                  {{else}}
+                      <script>
+                        /*To be changed depending on user's age and gender*/
+                        document.getElementById("dependent1").innerHTML = "Thigh: ";
+                        document.getElementById("dependent2").innerHTML = "Calf: ";
+                        document.getElementById("dependent1txt").style.marginLeft = "80px"
+                        document.getElementById("dependent1txt").style.marginLeft = "94px"
+                        </script>
+                  {{/if_eq}}
 
                   <script>
                     /*temporary BFP formula for female from ages  17-26 and no exercise*/

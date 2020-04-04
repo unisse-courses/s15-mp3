@@ -8,6 +8,7 @@
       <b style="color: cornflowerblue; font-family: Raleway; font-size: 85px; font-weight: bolder;">WeightMate</b>
     </div>
     
+    
     <script>
       function openNav() {
           document.getElementById("mySidenav").style.width = "250px";
@@ -33,13 +34,29 @@
       <canvas id="myChart" height="65%" width="125%"></canvas>
     </div>
   </div>
+
+  {{!-- {{log weights}} --}}
+
+  <script>
+    var decodedJson = decodeURIComponent("{{{encodedweight}}}");
+    var weights = JSON.parse(decodedJson);
+    
+    var weightvalues =weights.map(element => element.value);
+    var weightdatetemp =weights.map(element => element.date);
+    var weightdate = [];
+
+    weightdatetemp.forEach(function (item) {
+      weightdate.push(item.substring(0,10));
+    })
+</script>
+
   <script>
     var CHART = document.getElementById("myChart").getContext('2d');
 
     var linechart = new Chart(CHART, {
       type: 'line',
       data: {
-        labels: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+        labels: weightdate,
         datasets: [{
           label : "Weight",
           fill : false,
@@ -51,13 +68,40 @@
           pointHoverRadius: 9,
           pointHoverBackgroundColor: "rgba(75,192,192,1)",
           pointHoverBorderColor: "rgba(220,220,220,1)",
-          pointHoverBorderWidth: 3,
+          pointHoverBorderWidth: 3, 
           pointRadius: 1,
-          data: [1,2,3,4,5,6,6,7]
+          data: weightvalues
         }],
       },
       options:{}
-    }) 
+    });
+
+    function updateChart(){
+            chart.data.datasets[0].data = newdata;
+            chart.data.datasets[1].data = newdata1;
+            chart.update();
+        };
+
+        function addData() {
+          var date = new Date();
+          date =date.toString();
+          var label = date.substring(0,10);
+          data= document.getElementById('weight').val();
+
+            CHART.data.labels.push(label);
+            CHART.data.datasets.forEach((dataset) => {
+                dataset.data.push(data);
+            });
+            CHART.update();
+        };
+
+        function removeData(chart) {
+            chart.data.labels.pop();
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.pop();
+            });
+            chart.update();
+        }; 
   </script>
 <br>
 <br>
@@ -66,7 +110,7 @@
   </div>
   <div id="outer-div" width="100%">
       <div id="inner-div" >
-        <form action="/saveweight" method="POST" ><div style="margin:0px; padding:0px">
+        <form action="/saveweight" method="POST"><div style="margin:0px; padding:0px">
           <div>
             <label>Weight: </label>
             <input type="number" placeholder="In pounds" name="weight" id="weight" maxlength="20" required/>
@@ -81,37 +125,52 @@
   </div>
   <br>
   <br>
-  <script>
-      function computeCalories(){
-        /*Temporary formula for men*/
-        var weight = (parseFloat(document.getElementById("Weightcal").value)) * 0.453592;
-        var height = ((parseFloat(document.getElementById("Feet").value) * 12) + parseFloat(document.getElementById("Inches").value)) * 2.54;
-        var age = parseFloat(document.getElementById("Age").value);
-        var BMR = (10*weight + 6.25*height - 5*age + 5);
-        document.getElementById("BMR").value = BMR.toFixed(2);
-      }
-  </script>
+  {{#if_eq sex 'male'}}
+        <script>
+          function computeCalories(){
+            var weight = (parseFloat(document.getElementById("Weightcal").value)) * 0.453592;
+            var height = ((parseFloat(document.getElementById("Feet").value) * 12) + parseFloat(document.getElementById("Inches").value)) * 2.54;
+            var age = parseFloat(document.getElementById("Age").value);
+            var BMR = (10*weight + 6.25*height - 5*age + 5);
+
+            document.getElementById("BMR").value = BMR.toFixed(2);
+          }
+      </script>
+    {{else}}
+        <script>
+          function computeCalories(){
+            var weight = (parseFloat(document.getElementById("Weightcal").value)) * 0.453592;
+            var height = ((parseFloat(document.getElementById("Feet").value) * 12) + parseFloat(document.getElementById("Inches").value)) * 2.54;
+            var age = parseFloat(document.getElementById("Age").value);
+            var BMR = (10*weight + 6.25*height - 5*age - 161);
+
+            document.getElementById("BMR").value = BMR.toFixed(2);
+          }
+      </script>
+    {{/if_eq}}
+
+  
   <div align="center" id="CaloriesCalc">
       <p id="note">*Note that the resulting BMR or Calories intake is the minimum requirement for you to function assuming you have no exercise.</p>
     </div>
     <div id="outer-div" width="100%">
         <div id="inner-div" >
-          <form action="POST" action="#"><div style="margin:0px; padding:0px">
+          <form><div style="margin:0px; padding:0px">
             <div align="left">
               <label>Weight: </label>
               <input style="float: right;" type="number" placeholder="In pounds" name="Weightcal" id="Weightcal" maxlength="20" required/>
             </div>
             <div align="left">
               <label>Age: </label>
-              <input style="float: right;" type="number" name="Age" id="Age" maxlength="20" placeholder="In years" required/>
+              <input style="float: right;" type="number" name="Age" id="Age" maxlength="20" placeholder="In years" value={{{age}}} required/>
             </div>
             <div align="left">
               <label>Height-Feet: </label>
-              <input style="float: right;" type="number" placeholder="Feet" name="Feet" id="Feet" maxlength="20" required/>
+              <input style="float: right;" type="number" placeholder="Feet" name="Feet" id="Feet" maxlength="20" value={{{heightfeet}}} required/>
             </div>
             <div align="left">
               <label>Height-Inches: </label>
-              <input style="float: right;" type="number" placeholder="Inches" name="Inches" id="Inches" maxlength="20" required/>
+              <input style="float: right;" type="number" placeholder="Inches" name="Inches" id="Inches" maxlength="20" value={{{heightinch}}} required/>
             </div>
             <br>
             <div align="center">
