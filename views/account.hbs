@@ -1,3 +1,4 @@
+
 <div id="mainhome">
     <span style="cursor:pointer; float: left; font-size: 40px; color: white;" onclick="openNav()">&#9776;</span>
     
@@ -132,75 +133,23 @@
       <p>Select weight inputs to be edited or deleted.</p>
        <table class="scrolldown"> 
           
-        <!-- Table head content -->
         <thead> 
             <tr> 
-                <th>#</th> 
                 <th>Weight</th> 
                 <th>Date</th> 
                 <th>Edit</th> 
                 <th>Delete</th> 
             </tr> 
         </thead> 
-          
-        <!-- Table body content -->
         <tbody> 
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-            
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
+            {{#each weights}}
+                <tr  class="border_bottom"> 
+                    <td>{{this.value}}</td> 
+                    <td>{{this.date}}</td> 
+                    <td>Edit</td> 
+                    <td>Delete</td> 
+                </tr> 
+            {{/each}}
         </tbody> 
       </table> 
       <br>
@@ -217,7 +166,6 @@
         <!-- Table head content -->
         <thead> 
             <tr> 
-                <th>#</th> 
                 <th>BMI</th> 
                 <th>Date</th> 
                 <th>Edit</th> 
@@ -225,64 +173,15 @@
             </tr> 
         </thead> 
           
-        <!-- Table body content -->
         <tbody> 
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-            
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
+            {{#each BMIs}}
+                <tr  class="border_bottom"> 
+                    <td>{{this.value}}</td> 
+                    <td>{{this.date}}</td> 
+                    <td>Edit</i></td> 
+                    <td>Delete</td> 
+                </tr> 
+            {{/each}}
         </tbody> 
       </table> 
       <br>
@@ -295,11 +194,8 @@
     <div class="container2">
       <p>Select BMI inputs to be edited or deleted.</p>
        <table class="scrolldown"> 
-          
-        <!-- Table head content -->
         <thead> 
             <tr> 
-                <th>#</th> 
                 <th>Body Fat</th> 
                 <th>Date</th> 
                 <th>Edit</th> 
@@ -307,64 +203,15 @@
             </tr> 
         </thead> 
           
-        <!-- Table body content -->
         <tbody> 
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-            
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
-              
-            <tr> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-                <td>Content</td> 
-            </tr> 
+            {{#each BFPs}}
+                <tr  class="border_bottom"> 
+                    <td>{{this.value}}</td> 
+                    <td>{{this.date}}</td> 
+                    <td>Edit</td> 
+                    <td>Delete</td> 
+                </tr> 
+            {{/each}}
         </tbody> 
       </table> 
       <br>

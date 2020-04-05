@@ -59,7 +59,10 @@ router.get('/account', ensureAuthenticated,(req, res) => res.render('account', {
     country: req.user.country,
     email: req.user.email,
     username: req.user.username,
-    password: req.user.password
+    password: req.user.password,
+    weights: req.user.weights,
+    BMIs: req.user.BMIs,
+    BFPs: req.user.BFPs
 }));
 
 

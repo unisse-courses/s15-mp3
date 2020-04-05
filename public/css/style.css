@@ -169,6 +169,9 @@ h5 {
 h6 {
   font-size: medium;
 }
+tr.border_bottom td {
+  border-bottom:1pt solid black;
+}
 
 #yesprogress, #noprogress, #yesaccount, #noaccount{
   display: inline-block;

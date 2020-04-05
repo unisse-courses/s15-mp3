@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const handlebars = require('handlebars');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -20,6 +21,7 @@ const databaseURL = require('./config/keys').MongoURI;
  .catch(err => console.error(err));  
 
 app.engine( 'hbs', exphbs({
+  handlebars: allowInsecurePrototypeAccess(handlebars),
   extname: 'hbs', 
   defaultView: 'main', 
   layoutsDir: path.join(__dirname, '/views/layouts'), 
@@ -62,6 +64,7 @@ app.engine( 'hbs', exphbs({
     }
   }
 }));
+
 
 //express session middleware
 app.use(session({
