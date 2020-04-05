@@ -14,5 +14,5 @@ npm i express bcryptjs passport passport-local mongoose connect-flash express-se
 npm i -D nodemon
 
 SAMPLE USERS
-email: steven912k@gamil.com
+email: steven912k@gmail.com
 pass: 12345678
