@@ -5,6 +5,8 @@ const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-acce
 const handlebars = require('handlebars');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+var moment = require('moment');
+moment().format();
 const app = express();
 
 require('./config/passport')(passport);
@@ -61,6 +63,11 @@ app.engine( 'hbs', exphbs({
       } else {
           return opts.inverse(this);
       }
+    },
+    formatDate: function(dateString){
+      return new handlebars.SafeString(
+        moment(dateString).format("MMM D YYYY").toUpperCase()
+      );
     }
   }
 }));
