@@ -73,33 +73,6 @@
       },
       options:{}
     });
-
-    function updateChart(){
-            chart.data.datasets[0].data = newdata;
-            chart.data.datasets[1].data = newdata1;
-            chart.update();
-        };
-
-        function addData() {
-          var date = new Date();
-          date =date.toString();
-          var label = date.substring(0,10);
-          data= document.getElementById('weight').val();
-
-            CHART.data.labels.push(label);
-            CHART.data.datasets.forEach((dataset) => {
-                dataset.data.push(data);
-            });
-            CHART.update();
-        };
-
-        function removeData(chart) {
-            chart.data.labels.pop();
-            chart.data.datasets.forEach((dataset) => {
-                dataset.data.pop();
-            });
-            chart.update();
-        }; 
   </script>
 <br>
 <br>
