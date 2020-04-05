@@ -10,7 +10,7 @@ Lim, Steven Edward C.
 
 NPM INSTALL
 npm init -y
-npm i express bcryptjs passport passport-local mongoose connect-flash express-session express-handlebars
+npm i express bcryptjs passport passport-local mongoose connect-flash express-session express-handlebars @handlebars/allow-prototype-access
 npm i -D nodemon
 
 SAMPLE USERS
