@@ -184,7 +184,7 @@ tr.border_bottom td {
   margin-left: 200px;
 }
 
-#noprogress, #noaccount {
+#noprogress, #noaccount, #passcancel{
   background-color: lightcoral;
 }
 

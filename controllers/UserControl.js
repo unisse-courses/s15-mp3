@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const bcrypt = require('bcryptjs');
 
 module.exports = {
 
@@ -54,6 +55,94 @@ module.exports = {
         .catch(err=>{
             console.log(err)
         });
+    },
+
+    uppdateuser: (req, res) =>{
+        const { firstname, lastname, heightfeet, heightinch, gender, country, email, username, opsw, npsw, npswrepeat} = req.body;
+
+        if(opsw !== '' || npsw !== '' || npswrepeat !== '')
+        {
+            console.log('passopen');
+
+            User.findOne({_id: req.user._id})
+            .then(user =>{
+                if (user){
+                    console.log("user exists");
+                    
+                    bcrypt.compare(opsw, user.password, (err, isMatch)=>{
+                        if (err) throw err;
+    
+                        if(isMatch){
+                            console.log('password match');
+                            if(npsw !== npswrepeat){
+                                console.log("new passwords dont match");
+                            }
+                            else{
+                                //Hash Password
+                                bcrypt.genSalt(10, (err, salt) =>  
+                                bcrypt.hash(npsw, salt, (err, hash)=>{
+                                if(err) throw err;
+                               User.updateOne({_id: req.user._id}, 
+                                {   $set: { 
+                                    firstname: firstname,
+                                    lastname: lastname,
+                                    heightfeet: heightfeet,
+                                    heightinch: heightinch,
+                                    sex: gender,
+                                    country: country,
+                                    email: email,
+                                    username: username,
+                                    password: hash
+                                }
+                              })
+                              .then(user=> {
+                                if(!req.user) console.log('user do not exists');
+                            
+                                res.redirect('/users/account');
+                            
+                                })
+                                .catch(err=>{
+                                    console.log(err)
+                                });
+                                
+                                    }))
+                            }
+                        }else
+                        {
+                            console.log('password dont match');
+                        }
+                    });
+                }else{
+                    res.send('update failed');
+                }
+            });
+            
+        }
+        else {
+            console.log('close pass');
+            User.updateOne({_id: req.user._id}, 
+                {   $set: { 
+                    firstname: firstname,
+                    lastname: lastname,
+                    heightfeet: heightfeet,
+                    heightinch: heightinch,
+                    sex: gender,
+                    country: country,
+                    email: email,
+                    username: username
+                }
+              })
+              .then(user=> {
+                if(!req.user) console.log('user do not exists');
+            
+                res.redirect('/users/account');
+            
+                })
+                .catch(err=>{
+                    console.log(err)
+                });
+        }
+        // 
     }//,
     // retrieve: (req, res) =>{
     //     User.find()

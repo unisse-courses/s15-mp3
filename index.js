@@ -117,6 +117,7 @@ app.post('/', IndexControl.login);
 app.post('/saveweight', UserControl.insertweight);
 app.post('/saveBMI', UserControl.inserBMI);
 app.post('/saveBFP', UserControl.inserBFP);
+app.post('/updateuser', UserControl.uppdateuser);
 
 app.listen(port, function() {
   console.log('App listening at port '  + port)
