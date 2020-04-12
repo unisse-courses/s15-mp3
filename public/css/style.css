@@ -143,7 +143,7 @@ thead tr th {
 table.scrolldown tbody { 
       
     /* Set the height of table body */ 
-    height: 100px;  
+    height: 200px;  
       
     /* Set vertical scroll */ 
     overflow-y: auto; 
@@ -186,6 +186,28 @@ tr.border_bottom td {
 
 #noprogress, #noaccount, #passcancel{
   background-color: lightcoral;
+}
+
+#editweight, #editBMI, #editBFP{
+  background-color: #6efff8;
+  border : 1px solid black;
+  color: black;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#deleteweight, #deleteBMI, #deleteBFP{
+  background-color: tomato;
+  border : 1px solid black;
+  color: black;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
   
