@@ -68,6 +68,7 @@ router.get('/account', ensureAuthenticated,(req, res) => res.render('account', {
 }));
 
 router.get('/deleteaccount', ensureAuthenticated, UserControl.deleteaccount);
+router.get('/deleteinputs', ensureAuthenticated, UserControl.deleteinputs);
 
 module.exports=router;
 

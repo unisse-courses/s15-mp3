@@ -153,6 +153,25 @@ module.exports = {
         .catch(err=>{
             console.log(err);
         });
+    },
+    deleteinputs: (req, res) =>{
+        User.updateOne({_id: req.user._id}, 
+            {   $set: { 
+                weights: [],
+                BMIs: [],
+                BFPs: []
+            }
+          })
+          .then(user=> {
+            if(!req.user) console.log('user do not exists');
+        
+            console.log('inputs deleted');
+            res.redirect('/users/account');
+        
+            })
+            .catch(err=>{
+                console.log(err)
+            });
     }
     // retrieve: (req, res) =>{
     //     User.find()
