@@ -111,13 +111,15 @@ app.use('/users', require('./routes/users'));
 
 app.use('/logout', IndexControl.logout);
 
+
 app.post('/register', IndexControl.register);
 app.post('/', IndexControl.login);
 
 app.post('/saveweight', UserControl.insertweight);
 app.post('/saveBMI', UserControl.inserBMI);
 app.post('/saveBFP', UserControl.inserBFP);
-app.post('/updateuser', UserControl.uppdateuser);
+app.post('/updateuser', UserControl.updateuser);
+
 
 app.listen(port, function() {
   console.log('App listening at port '  + port)

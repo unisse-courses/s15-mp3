@@ -56,8 +56,7 @@ module.exports = {
             console.log(err)
         });
     },
-
-    uppdateuser: (req, res) =>{
+    updateuser: (req, res) =>{
         const { firstname, lastname, heightfeet, heightinch, gender, country, email, username, opsw, npsw, npswrepeat} = req.body;
 
         if(opsw !== '' || npsw !== '' || npswrepeat !== '')
@@ -142,8 +141,19 @@ module.exports = {
                     console.log(err)
                 });
         }
-        // 
-    }//,
+    },
+    deleteaccount: (req, res) =>{
+        User.remove({_id: req.user._id})
+        .then(result =>{
+            if(!result) res.json({success: false, result: "No user was found was found with that id"});
+
+            console.log('user removed success');
+            res.redirect('/');
+        })
+        .catch(err=>{
+            console.log(err);
+        });
+    }
     // retrieve: (req, res) =>{
     //     User.find()
     //     .then(result =>{
@@ -155,15 +165,5 @@ module.exports = {
     //         res.json({success: false, result: err});
     //     });
     // },
-    // delete: (req, res) =>{
-    //     User.remove({_id: req.body._id})
-    //     .then(result =>{
-    //         if(!result) res.json({success: false, result: "No user was found was found with that id"});
-
-    //         res.json({sucess: true, result: result});
-    //     })
-    //     .catch(err=>{
-    //         res.json({success: false, result: err});
-    //     });
-    // }
+    
 }

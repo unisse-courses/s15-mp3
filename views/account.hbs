@@ -157,8 +157,8 @@
                 <tr  class="border_bottom"> 
                     <td>{{this.value}}</td> 
                     <td>{{formatDate this.date}}</td> 
-                    <td><button type="submit" id="editweight">Edit</button></td> 
-                    <td><button type="submit" id="deleteweight">Delete</button></td> 
+                    <td><a href="/users/home" id="editweight">Edit</a></td> 
+                    <td><a href="/users/home" id="deleteweight">Delete</a></td> 
                 </tr> 
             {{/each}}
         </tbody> 
@@ -189,8 +189,8 @@
                 <tr  class="border_bottom"> 
                     <td>{{this.value}}</td> 
                     <td>{{formatDate this.date}}</td> 
-                    <td><button type="submit" id="editBMI">Edit</button></td> 
-                    <td><button type="submit" id="deleteBMI">Delete</button></td> 
+                    <td><a href="/users/home" id="editBMI">Edit</a></td> 
+                    <td><a href="/users/home" id="deleteBMI">Delete</a></td> 
                 </tr> 
             {{/each}}
         </tbody> 
@@ -219,8 +219,8 @@
                 <tr  class="border_bottom"> 
                     <td>{{this.value}}</td> 
                     <td>{{formatDate this.date}}</td> 
-                    <td><button type="submit" id="editBFP">Edit</button></td> 
-                    <td><button type="submit" id="deleteBFP">Delete</button></td> 
+                    <td><a href="/users/home" id="editBFP">Edit</a></td> 
+                    <td><a href="/users/home" id="deleteBFP">Delete</a></td> 
                 </tr> 
             {{/each}}
         </tbody> 
@@ -259,7 +259,7 @@
       <p>This will delete all of your data inputs in Weight, BMI and Body Fat.</p>
       <button type="button" id="deleteprogress" onclick="progress()">Delete Progress</button>
       <div id="progresscontainer" style="display: none;">
-        <h6>Are your sure?</h6>
+        <h6>Are you sure?</h6>
         <button id="yesprogress">Yes</button><button id="noprogress" onclick="noprogress()">No</button>
       </div>
 
@@ -269,8 +269,8 @@
       <p>This will deactivate your account, delete all of your data inputs in Weight, BMI and Body Fat and delete your account from our website.</p>
       <button type="button" id="deleteaccount" onclick="account()">Delete Account</button>
       <div id="accountcontainer" style="display: none;">
-        <h6>Are your sure?</h6>
-        <button id="yesaccount">Yes</button><button id="noaccount" onclick="noaccount()">No</button>
+        <h6>Are you sure?</h6>
+        <button id="yesaccount" onclick="window.location.href = '/users/deleteaccount'" >Yes</button><button id="noaccount" onclick="noaccount()">No</button>
       </div>
     </div>
 

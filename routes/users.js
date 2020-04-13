@@ -4,6 +4,8 @@ const {ensureAuthenticated} = require('../config/auth');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
+const UserControl = require('../controllers/UserControl');
+
 function calculate_age(date) { 
     var diff_ms = Date.now() - date;
     var age_dt = new Date(diff_ms); 
@@ -65,6 +67,7 @@ router.get('/account', ensureAuthenticated,(req, res) => res.render('account', {
     BFPs: req.user.BFPs
 }));
 
+router.get('/deleteaccount', ensureAuthenticated, UserControl.deleteaccount);
 
 module.exports=router;
 
