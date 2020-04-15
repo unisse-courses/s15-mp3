@@ -175,18 +175,18 @@ tr.border_bottom td {
   border-bottom:1pt solid black;
 }
 
-#yesprogress, #noprogress, #yesaccount, #noaccount{
+#yesprogress, #noprogress, #yesaccount, #noaccount, #yesweight, #yesBMI, #yesBFP,  #noweight, #noBMI, #noBFP{
   display: inline-block;
   margin-left: 10px;
   width: 15%;
 }
 
-#yesprogress, #yesaccount{
+#yesprogress, #yesaccount, #yesweight, #yesBMI, #yesBFP{
   background-color: lightgreen;
   margin-left: 200px;
 }
 
-#noprogress, #noaccount, #passcancel{
+#noprogress, #noaccount, #passcancel, #noweight, #noBMI, #noBFP{
   background-color: lightcoral;
 }
 

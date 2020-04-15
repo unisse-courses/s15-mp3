@@ -137,6 +137,42 @@
     <br>
 
     <hr>
+    <script>
+        function progress(){
+        document.getElementById('progresscontainer').style.display = "block ";
+        }
+        function noprogress(){
+        document.getElementById('progresscontainer').style.display = "none ";
+        }
+
+        function account(){
+        document.getElementById('accountcontainer').style.display = "block ";
+        }
+        function noaccount(){
+        document.getElementById('accountcontainer').style.display = "none";
+        }
+
+        function weight(){
+        document.getElementById('weightcontainer').style.display = "block ";
+        }
+        function noweight(){
+        document.getElementById('weightcontainer').style.display = "none";
+        }
+
+        function BMI(){
+        document.getElementById('BMIcontainer').style.display = "block ";
+        }
+        function noBMI(){
+        document.getElementById('BMIcontainer').style.display = "none";
+        }
+
+        function BFP(){
+        document.getElementById('BFPcontainer').style.display = "block ";
+        }
+        function noBFP(){
+        document.getElementById('BFPcontainer').style.display = "none";
+        }
+    </script>
     <div class="container">
     <h1>Weight</h1>
     <p>Manage your Weight inputs here.</p>
@@ -158,11 +194,20 @@
                     <td>{{this.value}}</td> 
                     <td>{{formatDate this.date}}</td> 
                     <td><a href="/users/home" id="editweight">Edit</a></td> 
-                    <td><a href="/users/home" id="deleteweight">Delete</a></td> 
+                    <td><a href="/users/deleteweight/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');" id="deleteweight">Delete</a></td> 
                 </tr> 
             {{/each}}
         </tbody> 
       </table> 
+      <br>
+      <br>
+      <h5>Delete Entire Weight Input</h5>
+      <p>This will delete all of your data inputs in Weight.</p>
+      <button type="button" id="deleteallweight" onclick="weight()">Delete All Weight</button>
+      <div id="weightcontainer" style="display: none;">
+        <h6>Are you sure?</h6>
+        <button id="yesweight" onclick="window.location.href = '/users/deleteweightinputs'">Yes</button><button id="noweight" onclick="noweight()">No</button>
+      </div>
       <br>
       <br>
     </div>
@@ -190,11 +235,20 @@
                     <td>{{this.value}}</td> 
                     <td>{{formatDate this.date}}</td> 
                     <td><a href="/users/home" id="editBMI">Edit</a></td> 
-                    <td><a href="/users/home" id="deleteBMI">Delete</a></td> 
+                    <td><a href="/users/deleteBMI/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');" id="deleteBMI">Delete</a></td> 
                 </tr> 
             {{/each}}
         </tbody> 
       </table> 
+      <br>
+      <br>
+      <h5>Delete Entire BMI Input</h5>
+      <p>This will delete all of your data inputs in BMI.</p>
+      <button type="button" id="deleteallBMI" onclick="BMI()">Delete All BMI</button>
+      <div id="BMIcontainer" style="display: none;">
+        <h6>Are you sure?</h6>
+        <button id="yesBMI" onclick="window.location.href = '/users/deleteBMIinputs'">Yes</button><button id="noBMI" onclick="noBMI()">No</button>
+      </div>
       <br>
       <br>
     </div>
@@ -220,11 +274,20 @@
                     <td>{{this.value}}</td> 
                     <td>{{formatDate this.date}}</td> 
                     <td><a href="/users/home" id="editBFP">Edit</a></td> 
-                    <td><a href="/users/home" id="deleteBFP">Delete</a></td> 
+                    <td><a href="/users/deleteBFP/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');" id="deleteBFP">Delete</a></td> 
                 </tr> 
             {{/each}}
         </tbody> 
       </table> 
+      <br>
+      <br>
+      <h5>Delete Entire BFP Input</h5>
+      <p>This will delete all of your data inputs in BFP.</p>
+      <button type="button" id="deleteallBFP" onclick="BFP()">Delete All BFP</button>
+      <div id="BFPcontainer" style="display: none;">
+        <h6>Are you sure?</h6>
+        <button id="yesBFP" onclick="window.location.href = '/users/deleteBFPinputs'">Yes</button><button id="noBFP" onclick="noBFP()">No</button>
+      </div>
       <br>
       <br>
     </div>
@@ -232,26 +295,6 @@
 
     <h1>Progress and Account</h1>
     <p>Manage your Account progress or deletion here.</p>
-    <script>
-        function progress(){
-        document.getElementById('progresscontainer').style.display = "block ";
-        }
-        function yesprogress(){
-          /*code next time when database is done*/
-        }
-        function noprogress(){
-        document.getElementById('progresscontainer').style.display = "none ";
-        }
-
-        function account(){
-        document.getElementById('accountcontainer').style.display = "block ";
-        }
-        function yesaccount(){
-          /*code next time when database is done*/
-        }
-        function noaccount(){
-        document.getElementById('accountcontainer').style.display = "none";
-        }
     </script>
 
     <div class="container2">

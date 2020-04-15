@@ -142,6 +142,63 @@ module.exports = {
                 });
         }
     },
+    deleteweight: (req, res) =>{
+        User.updateOne({_id: req.user._id}, 
+            {   $pull: { 
+                "weights": {
+                    _id: req.params.id
+                }
+            }
+          })
+          .then(user=> {
+            if(!req.user) console.log('user do not exists');
+        
+            console.log('weight input deleted');
+            res.redirect('/users/account');
+        
+            })
+            .catch(err=>{
+                console.log(err)
+            });
+    },
+    deleteBMI: (req, res) =>{
+        User.updateOne({_id: req.user._id}, 
+            {   $pull: { 
+                "BMIs": {
+                    _id: req.params.id
+                }
+            }
+          })
+          .then(user=> {
+            if(!req.user) console.log('user do not exists');
+        
+            console.log('BMI input deleted');
+            res.redirect('/users/account');
+        
+            })
+            .catch(err=>{
+                console.log(err)
+            });
+    },
+    deleteBFP: (req, res) =>{
+        User.updateOne({_id: req.user._id}, 
+            {   $pull: { 
+                "BFPs": {
+                    _id: req.params.id
+                }
+            }
+          })
+          .then(user=> {
+            if(!req.user) console.log('user do not exists');
+        
+            console.log('BFP input deleted');
+            res.redirect('/users/account');
+        
+            })
+            .catch(err=>{
+                console.log(err)
+            });
+    },
     deleteaccount: (req, res) =>{
         User.remove({_id: req.user._id})
         .then(result =>{
@@ -166,6 +223,57 @@ module.exports = {
             if(!req.user) console.log('user do not exists');
         
             console.log('inputs deleted');
+            res.redirect('/users/account');
+        
+            })
+            .catch(err=>{
+                console.log(err)
+            });
+    },
+    deleteweightinputs: (req, res) =>{
+        User.updateOne({_id: req.user._id}, 
+            {   $set: { 
+                weights: []
+            }
+          })
+          .then(user=> {
+            if(!req.user) console.log('user do not exists');
+        
+            console.log('weight inputs deleted');
+            res.redirect('/users/account');
+        
+            })
+            .catch(err=>{
+                console.log(err)
+            });
+    },
+    deleteBMIinputs: (req, res) =>{
+        User.updateOne({_id: req.user._id}, 
+            {   $set: { 
+                BMIs: []
+            }
+          })
+          .then(user=> {
+            if(!req.user) console.log('user do not exists');
+        
+            console.log('BMI inputs deleted');
+            res.redirect('/users/account');
+        
+            })
+            .catch(err=>{
+                console.log(err)
+            });
+    },
+    deleteBFPinputs: (req, res) =>{
+        User.updateOne({_id: req.user._id}, 
+            {   $set: { 
+                BFPs: []
+            }
+          })
+          .then(user=> {
+            if(!req.user) console.log('user do not exists');
+        
+            console.log('BFP inputs deleted');
             res.redirect('/users/account');
         
             })

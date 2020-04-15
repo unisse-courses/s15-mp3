@@ -67,8 +67,15 @@ router.get('/account', ensureAuthenticated,(req, res) => res.render('account', {
     BFPs: req.user.BFPs
 }));
 
+router.get('/deleteweight/:id', ensureAuthenticated, UserControl.deleteweight);
+router.get('/deleteBMI/:id', ensureAuthenticated, UserControl.deleteBMI);
+router.get('/deleteBFP/:id', ensureAuthenticated, UserControl.deleteBFP);
+
 router.get('/deleteaccount', ensureAuthenticated, UserControl.deleteaccount);
 router.get('/deleteinputs', ensureAuthenticated, UserControl.deleteinputs);
+router.get('/deleteweightinputs', ensureAuthenticated, UserControl.deleteweightinputs);
+router.get('/deleteBMIinputs', ensureAuthenticated, UserControl.deleteBMIinputs);
+router.get('/deleteBFPinputs', ensureAuthenticated, UserControl.deleteBFPinputs);
 
 module.exports=router;
 
