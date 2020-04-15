@@ -172,9 +172,28 @@
         function noBFP(){
         document.getElementById('BFPcontainer').style.display = "none";
         }
+
+        function editweight(){
+            var newinput = prompt('Enter new weight: ');
+            if(newinput){
+              document.getElementById('editweight').href += "&" + newinput;
+            } 
+        }
+        function editBMI(){
+            var newinput = prompt('Enter new BMI: ');
+            if(newinput){
+              document.getElementById('editBMI').href += "&" + newinput;
+            } 
+        }
+        function editBFP(){
+            var newinput = prompt('Enter new BFP: ');
+            if(newinput){
+              document.getElementById('editBFP').href += "&" + newinput;
+            } 
+        }
     </script>
     <div class="container">
-    <h1>Weight</h1>
+    <h1 id="allweight">Weight</h1>
     <p>Manage your Weight inputs here.</p>
     <div class="container2">
       <p>Select weight inputs to be edited or deleted.</p>
@@ -193,7 +212,7 @@
                 <tr  class="border_bottom"> 
                     <td>{{this.value}}</td> 
                     <td>{{formatDate this.date}}</td> 
-                    <td><a href="/users/home" id="editweight">Edit</a></td> 
+                    <td><a href="/users/editweight/{{this._id}}" onclick="editweight()" id="editweight">Edit</a></td> 
                     <td><a href="/users/deleteweight/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');" id="deleteweight">Delete</a></td> 
                 </tr> 
             {{/each}}
@@ -213,7 +232,7 @@
     </div>
     <hr>
 
-    <h1>BMI</h1>
+    <h1 id="allBMI">BMI</h1>
     <p>Manage your BMI inputs here.</p>
     <div class="container2">
       <p>Select BMI inputs to be edited or deleted.</p>
@@ -234,7 +253,7 @@
                 <tr  class="border_bottom"> 
                     <td>{{this.value}}</td> 
                     <td>{{formatDate this.date}}</td> 
-                    <td><a href="/users/home" id="editBMI">Edit</a></td> 
+                    <td><a href="/users/editBMI/{{this._id}}" onclick="editBMI()" id="editBMI">Edit</a></td> 
                     <td><a href="/users/deleteBMI/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');" id="deleteBMI">Delete</a></td> 
                 </tr> 
             {{/each}}
@@ -254,7 +273,7 @@
     </div>
     <hr>
 
-    <h1>Body Fat</h1>
+    <h1 id="allBFP">Body Fat</h1>
     <p>Manage your Body Fat inputs here.</p>
     <div class="container2">
       <p>Select BMI inputs to be edited or deleted.</p>
@@ -273,7 +292,7 @@
                 <tr  class="border_bottom"> 
                     <td>{{this.value}}</td> 
                     <td>{{formatDate this.date}}</td> 
-                    <td><a href="/users/home" id="editBFP">Edit</a></td> 
+                    <td><a href="/users/editBFP/{{this._id}}" onclick="editBFP()" id="editBFP">Edit</a></td> 
                     <td><a href="/users/deleteBFP/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');" id="deleteBFP">Delete</a></td> 
                 </tr> 
             {{/each}}

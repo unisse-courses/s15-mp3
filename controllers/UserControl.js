@@ -142,6 +142,57 @@ module.exports = {
                 });
         }
     },
+    editweight: (req, res) =>{
+        User.updateOne({_id: req.user._id, weights: {$elemMatch:{_id:req.params.id}}}, 
+            {   $set: { 
+                "weights.$.value": req.params.newinput
+            }
+          })
+          .then(user=> {
+            if(!req.user) console.log('user do not exists');
+        
+            console.log('weight input edited');
+            res.redirect('/users/account#allweight');
+        
+            })
+            .catch(err=>{
+                console.log(err)
+            });
+    },
+    editBMI: (req, res) =>{
+        User.updateOne({_id: req.user._id, BMIs: {$elemMatch:{_id:req.params.id}}}, 
+            {   $set: { 
+                "BMIs.$.value": req.params.newinput
+            }
+          })
+          .then(user=> {
+            if(!req.user) console.log('user do not exists');
+        
+            console.log('BMI input edited');
+            res.redirect('/users/account#allBMI');
+        
+            })
+            .catch(err=>{
+                console.log(err)
+            });
+    },
+    editBFP: (req, res) =>{
+        User.updateOne({_id: req.user._id, BFPs: {$elemMatch:{_id:req.params.id}}}, 
+            {   $set: { 
+                "BFPs.$.value": req.params.newinput
+            }
+          })
+          .then(user=> {
+            if(!req.user) console.log('user do not exists');
+        
+            console.log('BFP input edited');
+            res.redirect('/users/account#allBFP');
+        
+            })
+            .catch(err=>{
+                console.log(err)
+            });
+    },
     deleteweight: (req, res) =>{
         User.updateOne({_id: req.user._id}, 
             {   $pull: { 
