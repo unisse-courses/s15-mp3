@@ -47,9 +47,10 @@
     </script>
 
     <div class="container">
-
+    <div class="profile">
     <h1>Profile</h1>
     <p>Edit your profile below.</p>
+    </div>
     <hr>
 
     <div class="img">
@@ -70,6 +71,8 @@
         <label for="heightinch"><b>Height Inch</b></label>
         <input type="text" placeholder="Enter height" name="heightinch" id="heightinch" value={{{heightinch}}} required>
         <p></p>
+        <label for="sex"><b>Sex</b></label>
+        <p></p>
         {{#if_eq sex 'male'}}
             <input type="radio" id="male" name="gender" value="male" checked>
             <label for="male">Male</label><br><br>
@@ -81,9 +84,6 @@
             <input type="radio" id="female" name="gender" value="female" checked>
             <label for="female">Female</label>
         {{/if_eq}}
-        <p></p>
-        <label for="country"><b>Country</b></label>
-        <input type="text" placeholder="Change country" name="country" id="country" value={{{country}}} required>
         <p></p>
       </div>
 
@@ -103,6 +103,9 @@
       </script>
 
       <div class="container3">
+        <label for="country"><b>Country</b></label>
+        <input type="text" placeholder="Change country" name="country" id="country" value={{{country}}} required>
+        <p></p>
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Change email" name="email" id="email" value={{{email}}} required>
         <p></p>
@@ -111,7 +114,7 @@
         <p></p>
         <p>Change <a href="#avatar" onclick="showpass()">password?</a>.</p>
 
-            <div id = "changepass" style="display: none;">
+            <div id = "changepass" style = "display: none;">
             <label for="crpsw"><b>Current Password</b></label>
             <input type="password" placeholder="Current password" name="opsw" id="opsw">
             <p></p>   
@@ -121,7 +124,7 @@
             <label for="psw-repeat"><b>Repeat Password</b></label>
             <input type="password" placeholder="Confirm new password" name="npswrepeat"  id="npswrepeat">
             <p></p>
-            <button type="button" id="passcancel"onclick="hidepass()">Cancel</button>
+            <button type="button" id ="passcancel" onclick="hidepass()">Cancel</button>
             </div>
 
       </div>

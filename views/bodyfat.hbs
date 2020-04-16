@@ -5,7 +5,7 @@
           
           <div id="main" style="text-align: center; font-size: 30px;">
             <span style="cursor:pointer; float: left;" onclick="openNav()">&#9776;</span>
-            <b style="color: cornflowerblue; font-family: Raleway; font-size: 85px; font-weight: bolder;">WeightMate</b>
+            <b style="color: cornflowerblue; font-family: Raleway; font-size: 50px; font-weight: bolder;">WeightMate</b>
           </div>
           
           <script>
@@ -28,12 +28,10 @@
             }
           </script>
           
-<div id="chartBackground">
     <br>
     <div id="chartContainer">
       <canvas id="myChart" height="65%" width="125%"></canvas>
     </div>
-  </div>
 
   <script>
     var decodedJson = decodeURIComponent("{{{encodedBFP}}}");
@@ -75,7 +73,9 @@
       options:{}
     }) 
   </script>
+
         <div align="center">
+          <h1>Calculate your Body Fat</h1>
           <p id="note">*Note all measurements are circumferences of the assigned body part in inches.</p>
           <p id="note">*Formulas depend on your sex and age.</p>
         </div>
@@ -103,6 +103,7 @@
                     <input type="radio" id="No" name="exercise" value="No">
                     <label for="No">No</label>
                   </div>
+
                   {{#if_eq sex 'male'}}
                         {{#iff age '<' 27}}
                           <script>

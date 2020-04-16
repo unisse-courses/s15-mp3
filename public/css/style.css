@@ -83,19 +83,13 @@ body {
   #chartContainer{
     transition: .5s;
     background-color: white;
-    margin-left: 20px; 
-    height: 410px; 
-    width: 95%; 
-  }
- 
-  #chartBackground{
-    background-color: #ffd500;
-    margin-left: 400px; 
+    border: solid 4px;
+    margin: auto;
     transition: .5s;
     height: 455px;
     width: 50%; 
   }
-
+ 
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
@@ -669,26 +663,28 @@ form.login {
 
 /* Full-width inputs */
 form.login input[type=text] {
-  width: 18%;
+  width: 12%;
   padding: 8px 12px;
   margin: 8px 0;
   display: block;
   border: 1px solid black;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 form.login input[type=password] {
-  width: 10%;
+  width: 12%;
   padding: 8px 12px;
   margin: 8px 0;
   display: block;
   border: 1px solid black;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 /* Set a style for all buttons */
 .container button {
-  background-color: #4CAF50;
+  background-color: #C0C0C0;
   border : 2px solid black;
   color: black;
   padding: 14px 20px;
@@ -696,7 +692,12 @@ form.login input[type=password] {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 20%;
+  font-size: 20px;
+}
+
+.container label {
+  font-size: 18px;
 }
  
 /* Extra style for the cancel button (red) */
@@ -704,10 +705,11 @@ form.login input[type=password] {
   width: auto;
   border : 2px solid black;
   padding: 15px 18px;
-  background-color: #f44336;
+  background-color: #ff7369;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  font-size: 18px;
 }
 
 /* Center the avatar image inside this container */
@@ -718,7 +720,7 @@ form.login input[type=password] {
 
 /* Avatar image */
 img.avatar {
-  width: 15%;
+  width: 11%;
   background-color: white;
   border: 2px solid black;
   border-radius: 50%;
@@ -741,20 +743,26 @@ form.register{
 /* Full-width input fields */
 form.register input[type=text] {
   width: 10%;
-  padding: 15px;
+  padding: 10px;
   margin: 5px 0 22px 0;
   display: block;
   border: none;
   background: #f1f1f1;
+  font-size: 16px;
 }
 
 form.register input[type=password] {
-  width: 20%;
-  padding: 15px;
+  width: 10%;
+  padding: 10px;
   margin: 5px 0 22px 0;
   display: block;
   border: none;
   background: #f1f1f1;
+  font-size: 16px;
+}
+
+.container .profile {
+  margin-left: 400px;
 }
 
 .container .container2 {
