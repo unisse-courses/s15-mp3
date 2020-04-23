@@ -28,12 +28,12 @@
       }
     </script>
 
-<div id="chartBackground">
+
     <br>
+    <div id = "calcContainer">
     <div id="chartContainer">
-      <canvas id="myChart" height="65%" width="125%"></canvas>
+      <canvas id="myChart" height="65%" width="85%"></canvas>
     </div>
-  </div>
 
 <script>
     var decodedJson = decodeURIComponent("{{{encodedBMI}}}");
@@ -76,9 +76,6 @@
   </script>
 <br>
 <br>
-  <div align="center">
-    <p id="note">*Note that Weight must be in pounds and Height must be in feet and the extra inches.</p>
-  </div>
 
   <script>
     function computeBMI(){
@@ -89,8 +86,12 @@
     }
   </script>
 
-  <div id="outer-div" width="100%">
+  <div id="outer-div" width="50%">
       <div id="inner-div" >
+        <div align="center">
+                <h1>Calculate your BMI</h1>
+                <p id="note">*Note that Weight must be in pounds and Height must be in feet and the extra inches.</p>
+        </div>
         <form action="/saveBMI" method="POST"><div style="margin:0px; padding:0px">
           <div align="left">
             <label>Weight: </label>
@@ -124,6 +125,7 @@
    <div id = "CalContainer">
   <div id="BMIpic">
     <img src="https://i.ibb.co/gTnWYDB/BMI-standings.png" alt="BMI-standings" width="400" height="350">
+  </div>
   </div>
   </div>
 

@@ -83,13 +83,18 @@ body {
   #chartContainer{
     transition: .5s;
     background-color: white;
+    display: inline-block;
     border: solid 4px;
-    margin: auto;
+    margin-left: 50px;
     transition: .5s;
     height: 455px;
-    width: 50%; 
+    width: 100%; 
   }
- 
+
+  #calcContainer{
+    display: inline-flex;
+  }
+
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}

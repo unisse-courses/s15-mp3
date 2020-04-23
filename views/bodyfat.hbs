@@ -29,8 +29,9 @@
           </script>
           
     <br>
+    <div id = "calcContainer">
     <div id="chartContainer">
-      <canvas id="myChart" height="65%" width="125%"></canvas>
+      <canvas id="myChart" height="65%" width="85%"></canvas>
     </div>
 
   <script>
@@ -73,14 +74,15 @@
       options:{}
     }) 
   </script>
-
-        <div align="center">
-          <h1>Calculate your Body Fat</h1>
-          <p id="note">*Note all measurements are circumferences of the assigned body part in inches.</p>
-          <p id="note">*Formulas depend on your sex and age.</p>
-        </div>
-        <div id="outer-div" width="100%">
+  
+      
+        <div id="outer-div" width="50%">
             <div id="inner-div" >
+              <div align="center">
+                <h1>Calculate your Body Fat</h1>
+                <p id="note">*Note all measurements are circumferences of the assigned body part in inches.</p>
+                <p id="note">*Formulas depend on your sex and age.</p>
+              </div>
               <form action="/saveBFP" method="POST"><div style="margin:0px; padding:0px">
                 <div align="center">
                   <label>Abdomen: </label>
@@ -186,13 +188,4 @@
               </form>
             </div>
         </div>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        </div>

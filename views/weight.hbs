@@ -28,12 +28,12 @@
           document.body.style.backgroundColor = "white";
       }
     </script>
-  <div id="chartBackground">
+ 
     <br>
+    <div id = "calcContainer">
     <div id="chartContainer">
-      <canvas id="myChart" height="65%" width="125%"></canvas>
+      <canvas id="myChart" height="65%" width="75%"></canvas>
     </div>
-  </div>
 
   <script>
     var decodedJson = decodeURIComponent("{{{encodedweight}}}");
@@ -76,10 +76,11 @@
   </script>
 <br>
 <br>
-  <div align="center">
-    <p id="note">*Note input weight must be in pounds.</p>
-  </div>
-  <div id="outer-div" width="100%">
+
+  <div id="outer-div" width="50%">
+      <div align="center">
+      <p id="note">*Note input weight must be in pounds.</p>
+      </div>
       <div id="inner-div" >
         <form action="/saveweight" method="POST"><div style="margin:0px; padding:0px">
           <div>
@@ -154,6 +155,7 @@
             </div> 
           </form>
         </div>
+    </div>
     </div>
 
   <br>
