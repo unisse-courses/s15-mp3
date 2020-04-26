@@ -8,11 +8,11 @@ Dionisio, Geryco Eugynn T.
 
 Lim, Steven Edward C.
 
-NPM INSTALL
-
-npm init -y
-npm i express bcryptjs passport passport-local mongoose connect-flash express-session express-handlebars @handlebars/allow-prototype-access moment
-npm i -D nodemon
+INSTRUCTIONS:
+1. Download project from github link
+2. Npm install in cmd for dependencies
+3. To open locally type npm run debug
+4. Click link below to open the web deployed app
 
 WEBSITE LINK
 https://weightmatemp.herokuapp.com/
